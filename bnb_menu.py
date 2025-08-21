@@ -54,11 +54,11 @@ def execute_transaction(private_key, data, value=0, description="transaction"):
         # 优化gas设置
         # 使用更高的gas price确保交易被快速处理
         base_gas_price = w3.eth.gas_price
-        gas_price = int(base_gas_price * 2)  # 增加20%的gas price
+        gas_price = int(base_gas_price * 1)  # 增加20%的gas price
         
         # 根据实际使用情况调整gas limit
         if description == "sign":
-            gas_limit = 5010874     # 根据你提供的实际使用量1,223,781，设置更高的limit
+            gas_limit = 872541      # 根据你提供的实际使用量1,223,781，设置更高的limit
         else:
             gas_limit = 571060   # 注册交易通常需要更少的gas
         
@@ -119,7 +119,7 @@ def register_accounts():
                 logging.warning(f"Insufficient balance for {address}, skipping...")
                 continue
             
-            register_data = "0xf2c298be000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000083858545a50394251000000000000000000000000000000000000000000000000"
+            register_data = "0xf2c298be00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000008345747465a565a30000000000000000000000000000000000000000000000000"
             success = execute_transaction(private_key, register_data, 0, "register")
             time.sleep(3)
             
